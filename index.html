@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.1.0/math.min.js"></script>
+    <title>Licenciatura || CIG 2023</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<style>
+
+</style>
+<body>
+    <select id="menu" onchange="selecionarmenu(this.value)">
+        <option value="inicio" onclick="pag1()">Inicio</option>
+        <option value="information">Informaçoes</option>
+        <option value="documents">Documentos</option>
+        <option value="cadastrar">Cadastrar</option>
+        <option value="chat">Bate-Papo</option>
+        <option value ='night'>night Mode</option>
+        <option value="light">Light Mode</option>
+        <option value="pink">Pink Mode</option>
+        <option value="yellow">Yellow Mode</option>
+        <option value="brown">Brown Mode</option>
+        <option value="navy">Navy Mode</option>
+    </select>
+    <div class="search-icon" style="cursor: pointer;position: absolute;top: 1%;right: 1%;">
+        <img class="pesqicon" src="imagens/Icon.jpeg" alt="Ícone de Pesquisa" style="border-radius: 97px;width: 50px;height: 50px;" onclick="abrirCampoPesquisa()">
+    </div>
+    <div class="search-box" style="display:none;position: absolute;top: 2%;right: 5%;padding: 5px;border: 1px solid #ccc;border-radius: 4px;background-color: #fff;">
+        <input type="text" id="campoPesquisa" placeholder="Busca Rapida">
+        
+    </div>
+    <header style="font: normal 18pt algerian;color:rgb(148, 194, 41);text-align: center;text-align: center;margin: auto;width: 100%;">
+        <h1>Licenciatura em CIG 2023</h1> 
+    </header>
+    <section class="principal" id="principal" style="display: block;text-align: center;">
+        <div class="destaques" id="destaques" style="margin: auto;font:normal 25pt algerian;color:rgb(235, 110, 131);">Destaques</div>
+        <div class="pridivnews" style="background:pink;width: 80%;;margin: auto;color: rgb(184, 29, 29);margin-top: 5px;border-radius: 10px;text-align: left;height: auto;text-align: center;">
+            <div class="content" id="news" style="width: 80%;text-align: center;margin: auto;font:normal 20pt times new roman;">
+                <br><br>BREAK SAVAGERS NEWS!<br><br><br>
+            </div>
+      </div>
+        <div id="foto">
+            <img class="imagem" id="imagem" src="imagens/Licig.jpeg" alt="first picture" onclick="clicar()" style="margin-top: 30px;border-radius: 90px;width: 40%;">
+        </div>
+        <div class="calculadora" id="calculadora" style="font:normal 18pt times new roman;border: 4px solid #424040;width: 80%;margin:auto;height: auto;border-radius: 17px;">
+            <h3>Calculadora Basica</h3>
+            <input type="button" class="inpcalculadora" value="Equaçoes" id="equa" style=" width: 15%;height: 30px;border: 4px solid #424040;margin-top: 7px;" onclick="equa()">
+            <input type="button" class="inpcalculadora" value="Op. Basicas" id="basic" style=" width: 15%;height: 30px;border: 4px solid #424040;margin-top: 7px;" onclick="basic()">
+            <input type="button" class="inpcalculadora" value="N. Complexos" id="complexo" style=" width: 15%;height: 30px;border: 4px solid #424040;margin-top: 7px;" onclick="complexo()">
+            <input type="button" class="inpcalculadora" value="Sucessoes" id="sucessao" style=" width: 15%;height: 30px;border: 4px solid #424040;margin-top: 7px;" onclick="sucessao()">
+            <input type="button" class="inpcalculadora" value="Limites" id="limites" style=" width: 15%;height: 30px;border: 4px solid #424040;margin-top: 7px;" onclick="limites()">
+            <input type="button" class="inpcalculadora" value="Derivadas" id="derivadas" style=" width: 15%;height: 30px;border: 4px solid #424040;margin-top: 7px;" onclick="derivadas()">
+            <br><p></p>
+        </div>
+        <div id="sobresite" style="display: block;">
+            <div class="infor" id="infor" style=" cursor: pointer;position: absolute;left: 3%px;">
+                <img class="menu.icon" src="imagens/Menu.ico" alt="informacoes" width="50" height="50" onclick="infor()">
+            </div>
+        </div>
+            <div class="infobox" id="infobox" onclick="infobox()" style="display: none;position: absolute;top: 84%;left: 1%;border: 4px solid #ccc;border-radius: 0px;background-color: #fff;font: normal 12pt times new roman;width: 25%;">
+                <p>desenvolvido por: <strong>Valério Savage</strong></p>
+                <p>Web designer: <strong>Valério Savage</strong></p>
+                <p>Helper html: <strong>Shirley Matola</strong></p>
+                <p>Linha de Apoio: valeriodiasguite@gmail.com</p>
+                <p>contacto de apoio: 875797573</p>
+                <p>&copy;valerio@savage</p>
+            </div>
+        <footer id="rodape" style="background: azure;width: 100%;margin:auto;margin-top: 10px;border-radius: 30px;">
+            <div>&copy;LI_CIG@2023</div>
+        </footer>
+    </section>
+    <!--seccao de calculo de equacoes-->
+    <div id="equacoes" class="equa" style="display: none;text-align: center;background: rgb(199, 77, 98);">
+        <br><br>
+        <h1>Calculadora de Equações</h1>
+        <h2>Equação Linear</h2>
+
+        <input type="number" class="inpequacoes" id="linear-a" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;" placeholder="Coeficiente a">
+        <input type="number" class="inpequacoes" id="linear-b" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;" placeholder="Coeficiente b">
+        <button onclick="calcularEquacaoLinear()" class="inpequacoes" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">Calcular</button>
+        <br><br>
+        <p id="linear-resposta"></p>
+
+        <h2>Equação Quadrática</h2>
+        <input type="number" class="inpequacoes" id="quad-a" placeholder="Coeficiente a" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" class="inpequacoes" id="quad-b" placeholder="Coeficiente b" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" class="inpequacoes" id="quad-c" placeholder="Coeficiente c" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <button onclick="calcularEquacaoQuadratica()" class="inpequacoes" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">Calcular</button>
+        <p id="quad-resposta"></p>
+
+        <h2>Equação Biquadrática</h2>
+        <input type="number" class="inpequacoes" id="biquad-a" placeholder="Coeficiente a" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" class="inpequacoes" id="biquad-b" placeholder="Coeficiente b" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" class="inpequacoes" id="biquad-c" placeholder="Coeficiente c" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <button onclick="calcularEquacaoBiquadratica()" class="inpequacoes" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">Calcular</button>
+        <p id="biquad-resposta"></p>
+
+        <h2>Sistemas de equaçoes Lineares</h2>
+        <input type="number" id="inco-a1" placeholder="coeficiente a1" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" id="inco-b1" placeholder="coeficiente b1" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" id="inco-c1" placeholder="coeficiente c1" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;"></br>
+        <input type="number" id="inco-a2" placeholder="coeficiente a2" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" id="inco-b2" placeholder="coeficiente b2" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" id="inco-c2" placeholder="coeficiente c2" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;"></br>
+        <button onclick="calcularEquacao2Incognitas()" class="inpequacoes" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">Calcular</button>
+        <p id="resultadoX"></p>
+        <p id="resultadoY"></p>
+
+        <h2>Sistema de Equaçoes de 3 Incógnitas</h2>
+        <input type="number" class="inpequacoes" id="incog-a1" placeholder="Coeficiente a1" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" class="inpequacoes" id="incog-b1" placeholder="Coeficiente b1" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" class="inpequacoes" id="incog-c1" placeholder="Coeficiente c1" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" class="inpequacoes" id="incog-d1" placeholder="Termo independente d1" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;"></br>
+        <input type="number" class="inpequacoes" id="incog-a2" placeholder="Coeficiente a2" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" class="inpequacoes" id="incog-b2" placeholder="Coeficiente b2" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" class="inpequacoes" id="incog-b2" placeholder="Coeficiente b2" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" class="inpequacoes" id="incog-c2" placeholder="Coeficiente c2" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" class="inpequacoes" id="incog-d2" placeholder="Termo independente d2" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;"></br>
+        <input type="number" class="inpequacoes" id="incog-a3" placeholder="Coeficiente a3" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" class="inpequacoes" id="incog-b3" placeholder="Coeficiente b3" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" class="inpequacoes" id="incog-c3" placeholder="Coeficiente c3" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <input type="number" class="inpequacoes" id="incog-d3" placeholder="Termo independente d3" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;"></br>
+        <button onclick="calcularEquacao3Incognitas()" class="inpequacoes" style="text-align: center; height: 30px;font: normal 16pt times new roman; width: 150px;">Calcular</button>
+        <p id="incog-resposta"></p>
+        <br>
+        <br>
+    </div>
+    <!--seccao de calculo de operacoes basicas-->
+    <div id="op.basicas" class="basicas" style="display:none;background-color: rgb(161, 51, 51);font: normal 15pt arial;color: white;text-align: center;">
+        <br><br>
+        <div id ='p' onclick="clicar()" onmouseenter="entrar()" onmouseout="sair()">
+            21 ARTIMETCS SOLUTIONS
+        </div>
+        <h1>Soma</h1>
+        <input type="number" name="txtn1" class="inpsoma" id="txtn1" style="text-align: left; height: 35px;font: normal 18pt times new roman; width: 150px;"> +
+        <input type="number" name="txtn2" class="inpsoma" id="txtn2" style="text-align: left; height: 35px;font: normal 18pt times new roman; width: 150px;">
+        <input type="button" value="somar" class="inpsoma" onclick="somar()" style="text-align: center; height: 40px;font: normal 16pt times new roman; width: 150px;">
+         <div id="res">Resultado</div>
+    
+         <h1>multiplicaçao</h1>
+         <input type="number" name="txtn3" class="inpsoma" id="txtn3" style="text-align: left; height: 35px;font: normal 18pt times new roman; width: 150px;"> x
+         <input type="number" name="txtn4" class="inpsoma" id="txtn4" style="text-align: left; height: 35px;font: normal 18pt times new roman; width: 150px;">
+         <input type="button" class="inpsoma" value="Multiplicar" onclick="Multiplicar()" style="text-align: center; height: 40px;font: normal 18pt times new roman; width: 150px;">
+          <div id="prod">Resultado</div>
+    
+          <h1>Divisao</h1>
+         <input type="number" class="inpsoma" name="txtn5" id="txtn5" style="text-align: left; height: 35px;font: normal 18pt times new roman; width: 150px;"> ÷
+         <input type="number" class="inpsoma" name="txtn6" id="txtn6" style="text-align: left; height: 35px;font: normal 18pt times new roman; width: 150px;">
+         <input type="button" class="inpsoma" value="Dividir" onclick="Dividir()" style="text-align: center; height: 40px;font: normal 16pt times new roman; width: 150px;">
+          <div id="quo">Resultado</div><br><br>
+          <br><br>
+    </div>
+    <!--seccao de numeros complexos-->
+    <div id="n.complexos" class="complexo"  style="display: none;text-align: center; background: gray;font:normal 25pt times new roman ;">
+        <br>
+        <h1>Operações com Números Complexos</h1>
+        <br>
+        <label for="real1">Parte Real 1:</label>
+        <input type="number" class="inpcomplexo" id="real1" style="text-align: left; height: 30px;font: normal 16pt times new roman; width: 150px;">
+
+        <label for="imag1">Parte Imaginária 1:</label>
+        <input type="number" class="inpcomplexo" id="imag1" style="text-align: left; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <br><br>
+        <label for="real2">Parte Real 2:</label>
+        <input type="number" class="inpcomplexo" id="real2" style="text-align: left; height: 30px;font: normal 16pt times new roman; width: 150px;">
+
+        <label for="imag2">Parte Imaginária 2:</label>
+        <input type="number" class="inpcomplexo" id="imag2" style="text-align: left; height: 30px;font: normal 16pt times new roman; width: 150px;">
+        <br><br>
+        <button class="botcomplexo" onclick="cosomar()" style="text-align: left; height: 35px;font: normal 18pt times new roman; width: 15%;text-align: center;">Somar</button>
+        <button class="botcomplexo" onclick="cosubtrair()"  style="text-align: left; height: 35px;font: normal 18pt times new roman; width: 15%;text-align: center;">Subtrair</button>
+        <button class="botcomplexo" onclick="comultiplicar()"  style="text-align: left; height: 35px;font: normal 18pt times new roman; width: 15%;text-align: center;">Multiplicar</button>
+        <button class="botcomplexo" onclick="codividir()"  style="text-align: left; height: 35px;font: normal 18pt times new roman; width: 15%;text-align: center;">Dividir</button>
+        <button class="botcomplexo" onclick="copotenciacao()"  style="text-align: left; height: 35px;font: normal 18pt times new roman; width: 15%;text-align: center;">Potenciação</button>
+        <button class="botcomplexo" onclick="coradiciacao()"  style="text-align: left; height: 35px;font: normal 18pt times new roman; width: 15%;text-align: center;">Radiciação</button>
+        <br><br>
+        <div id="resultado"></div>
+        <br><br><br><br>
+    </div>
+    <!--seccao de calculo de sucessoes-->
+    <div id="sucessoes" class="sucessoes" style="margin: auto;width: 90%;background: paleturquoise;display: none;">
+        <div class="sucessoesb" style="width: 70%;margin: auto;">
+        <h1 style="text-align: center;font: normal 30pt algerian;color: #424040;">Sucessoes</h1>
+        <p><input type="number" class="inpsucessoes" id="termo1" placeholder="a1" style="text-align: center;border: 2px solid #424040;border-radius: 5px;height: 25px;"><strong>;</strong>
+        <input type="number"  class="inpsucessoes" id="termo2" placeholder="a2" style="text-align: center;border: 2px solid #424040;border-radius: 5px;height: 25px;"><strong>;</strong>
+        <input type="number"  class="inpsucessoes" id="termo3" placeholder="a3" style="text-align: center;border: 2px solid #424040;border-radius: 5px;height: 25px;">
+        <input type="button"  class="inpsucessoes" id="identificar" value="Identificar e calcular sucessao" onclick="calcularsucessao()" style="text-align: center;border: 2px solid #424040;border-radius: 5px;height: 25px;"></p>
+        <p>Número do Termo:<input type="number"  class="inpsucessoes" placeholder="Número do Termo" id="numerodetermo" style="text-align: center;border: 2px solid #424040;border-radius: 5px;height: 25px;"></p>
+        <p id="tipodesucessao" style="font: normal 18pt times new roman;">Answer:</p><br>
+        </div><br><br><br><br>
+      </div>
+    <!--seccao de informacoes-->
+    <div id="opinformacoes" class="opinformacoes" style="display: none;font:normal 20pt times new roman;border: 4px solid #424040;width: 80%;margin:auto;height: auto;border-radius: 17px; background: #0a729c;color:white;text-align: center;">
+        <div id="classinfo" >
+            <input type="button" class="inpinformacoes" value="Informaçoes" id="infc" style="width: 15%;font:normal 18pt times new roman;border: none;outline: none;background:rgb(9, 113, 155);color: white;cursor: pointer;height: 40px;margin-top: 0px;text-align: center;" onclick="informacoes()" onmouseenter="entradamf()" onmouseleave="saidamf()"> 
+            <input type="button" class="inpinformacoes" value="Cadeiras" id="cadeiras" style="width: 15%;font:normal 18pt times new roman;border: none;outline: none;background:rgb(9, 113, 155);color: white;cursor: pointer;height: 40px;margin-top: 0px;text-align: center;" onclick="cadeiras()"  onmouseenter="entradamc()" onmouseleave="saidamc()">
+            <input type="button" class="inpinformacoes" value="Ranking" id="ranking" style="width: 15%;font:normal 18pt times new roman;border: none;outline: none;background:rgb(9, 113, 155);color: white;cursor: pointer;height: 40px;margin-top: 0px;text-align: center;" onclick="ranking()"  onmouseenter="entradamr()" onmouseleave="saidamr()">
+            <input type="button" class="inpinformacoes" value="Memorias" id="memorias" style="width: 15%;font:normal 18pt times new roman;border: none;outline: none;background:rgb(9, 113, 155);color: white;cursor: pointer;height: 40px;margin-top: 0px;text-align: center;" onclick="memorias()"  onmouseenter="entradamm()" onmouseleave="saidamm()">
+            <input type="button" class="inpinformacoes" value="Projectos" id="projectos" style="width: 15%;font:normal 18pt times new roman;border: none;outline: none;background:rgb(9, 113, 155);color: white;cursor: pointer;height: 40px;margin-top: 0px;text-align: center;" onclick="projectos()"  onmouseenter="entradamp()" onmouseleave="saidamp()">
+            <input type="button" class="inpinformacoes" value="Sobre site" id="autentico" style="width: 15%;font:normal 18pt times new roman;border: none;outline: none;background:rgb(9, 113, 155);color: white;cursor: pointer;height: 40px;margin-top: 0px;text-align: center;" onclick="sobresite()"  onmouseenter="entradamch()" onmouseleave="saidamch()">
+        </div>
+    </div>
+    <!--seccao de bate papo-->
+    <div id="savagechat" style="display: none;"><br>
+        <h1 id="firewall" class="firewall" style="text-align: center;font: normal 35pt rockwell extra bold; color:brown;display: block;"><strong>CIG SAVAGERY CHAT Firewall </strong></h1><BR>
+
+            <div id="loginchat" style="margin: auto;text-align: center;">
+                <form id="login-form">
+                    <label for="usernamechat">Nome:</label>
+                    <input type="text" id="usernamechat" required>
+        
+                    <label for="senhachat">Senha:</label>
+                    <input type="password" id="senhachat" required>
+        
+                    <button type="button" onclick="cadastrarUsuario()" id="entrarnochat" onkeydown="entrarnochat()">Entrar</button>
+                  <!--<button type="button" onclick="limparHistorico()">limpar</button>-->  
+        
+                    <p id="login-mensagem"></p>
+                </form>
+            </div>
+        
+            <div id="papo" class="papo" style="display: none;background: yellowgreen;"><br>
+                <h1 style="text-align: center;">Bate-Papo</h1>
+        
+                <div id="conversa" class="conversa" style=" width: 30%;height: 400px;border: 1px solid #ccc;padding: 10px;overflow-y: scroll;margin-left: 3%;background: white;"></div>
+        
+                <div id="mensagem" style=" width: 50%;margin-top: 10px;display: flex;">
+    
+                    <input type="text" class="textoMensagemchat" id="textoMensagemchat" placeholder="Digite sua mensagem" style=" width: 100%;margin-top: 10px;display: flex;margin-left: 3%;height: 35px;text-align: left;">
+                    
+                    <button class="sendsms" onclick="sendsmschat()" style="width: 90px;border-radius: 5px;margin-left: 10px;">Enviar</button>
+                </div><br><br><br><br><br>
+            </div> 
+    </div>
+    <div id="cadastro" class="cadastro" style="display: none;margin: auto;text-align: center;background:rgb(109, 109, 131);font:normal 25pt times new romam;width: 95%;"><br>
+        <h1>Plataforma de Cadastro</h1>
+        <div class="cadastrob" style="width: 80%;margin: auto;">
+            <form id="formCadastro">
+                <label for="alcunha">Nome Completo:</label>
+                <input type="text" class="alcunha" id="alcunha" required style="height: 25px;border-radius: 8px;width: 300px;">
+
+                <label for="foto">Foto:</label>
+                <input type="file" id="rosto" accept="image/*" required>
+
+                <p><input type="button" value="Cadastrar" id="cadastrando" onclick="registrar()" style="height: 35px;border-radius: 8px;width: 120px;font:normal 16pt grimond;background:#1f5063;"></p>
+            </form>
+            <h2>Pessoas Cadastradas:</h2>
+            <!--<p><button onclick="limparCadastros()">Limpar Cadastros</button></p>-->
+            <div class="cadastrlist" id="listaPessoascadastradas" style="text-align: left;width: 90%;margin: auto;"></div>
+        </div><br>
+    </div> 
+    <div id="fichas" class="fichas" style="display: none;margin: auto;text-align: center;background: #0a729c;width: 95%;border-radius: 20px;width: 80%;">
+        <br><br>
+        <input type="button" value="ALGA" class="inpdocuments" style="width: 15%;height: 32px;margin-top: 7px; margin-left: 20px;border-radius: 10px;" onclick="alga()">
+        <input type="button" value="A.Matemática I" class="inpdocuments" style=" width: 15%;height: 32px;margin-top: 7px; margin-left: 20px;border-radius: 10px;" onclick="a_matematica()">
+        <input type="button" value="FGG" class="inpdocuments" style="  width: 15%;height: 32px;margin-top: 7px; margin-left: 20px;border-radius: 10px;" onclick="f_geo()">
+        <input type="button" value="P.Estatistica" class="inpdocuments" style=" width: 15%;height: 32px;margin-top: 7px; margin-left: 20px;border-radius: 10px;" onclick="p_estatistica()">
+        <input type="button" value="LTC" class="inpdocuments" style=" width: 15%;height: 32px;margin-top: 7px; margin-left: 20px;border-radius: 10px;" onclick="ltc()"> 
+        <br><br><br><br>
+    </div>
+    <div id="panorama" style="display: none;">
+        <div id="perfil" class="perfil" style="text-align: center;font:normal 20pt times new roman;border: 4px solid #424040;width: 80%;margin:auto;background: #1f5063;color:white;margin-top: 60px;">
+            <h3>Perfil da Turma:</h3>
+            <p>Universidade Eduardo Mondlane</p>
+            <p>Faculdade de Ciências</p>
+            <p>Departamento De Matemática E Informática</p>
+            <p>Licenciatura em CIG</p>
+            <p>SALA:C2</p>
+        </div>
+        <div id="perfil2" class="perfil2" style="font:normal 20pt times new roman;border: 4px solid #424040;width: 80%;background: #1f5063;color:white;margin: auto;margin-top: 10px;">
+            <div style="width:950px;margin: auto;">
+            <p>Director do curso: Marcio Mathe ||-----|| Tutor da Turma: Mario Chelengue</p>
+            <p>Contacto: +258 847 256 876 ||-----------|| Contacto: +258 874 725 377</p>
+        <br><p>Chefe da Turma: SuzanyRodrigues||------|| Subchefe da Turma: Jose Nelson</p>
+            <p>Contacto:+258 876 891 332 ||--------------|| Contacto: +258 845 474 057</p>
+            </div> 
+        </div>
+           
+    </div>
+    <div id="modulos" style="display: none;">
+        <div id="semestre">
+            <p style="font:normal 16pt times new roman;">Semestre</p><br><br>
+            <p>Primeiro</p>
+            <p>Primeiro</p>
+            <p>Primeiro</p>
+            <p>Primeiro</p>
+            <p>Primeiro</p>
+            <br>
+            <p>Segundo</p>
+            <p>Segundo</p>
+            <p>Segundo</p>
+            <p>Segundo</p>
+            <p>Segundo</p><br><br>
+            
+            <p>Primeiro</p>
+            <p>Primeiro</p>
+            <p>Primeiro</p>
+            <p>Primeiro</p>
+            <p>Primeiro</p>
+            <br>
+            <p>Segundo</p>
+            <p>Segundo</p>
+            <p>Segundo</p>
+            <p>Segundo</p>
+            <p>Segundo</p><br><br>
+
+            <p>Primeiro</p>
+            <p>Primeiro</p>
+            <p>Primeiro</p>
+            <p>Primeiro</p>
+            <p>Primeiro</p>
+            <br>
+            <p>Segundo</p>
+            <p>Segundo</p>
+            <p>Segundo</p>
+            <p>Segundo</p>
+            <p>Segundo</p><br><br>
+
+            <p>Primeiro</p>
+            <p>Primeiro</p>
+            <p>Primeiro</p>
+            <p>Primeiro</p>
+            <p>Primeiro</p>
+            <br>
+            <p>Segundo</p>
+            <p>Segundo</p>
+            <p>Segundo</p><br>
+        </div>
+        <div id="disciplina">
+            <p style="font:normal 16pt times new roman;">Disciplina ou Modulo</p>
+            <p style="font:normal 16pt times new roman;"><strong>Primeiro Ano</strong></p>
+            <p>Estatistica Basica</p>
+            <p>I.TICS</p>
+            <p>Fundamentos de Geografia</p>
+            <p>Matematica Basica</p>
+            <p>Métodos de Estudos</p>
+            <br>
+            <p>Algebra Linear e Geometria Analitica</p>
+            <p>Analise Matematica I</p>
+            <p>Fundamentos de Geologia e Geoformologia</p>
+            <p>Probabilidade e Estatistica</p>
+            <p>Logica e Teoria de Conjuntos</p>
+            
+            <p style="font:normal 16pt times new roman;"><strong>Segundo Ano</strong></p>
+            <p>Analise Matematica II</p    >
+            <p>Matematica Discreta</p>
+            <p>Introduçao a Informatica</p>
+            <p>Topografia I</p>
+            <p>Instrumentaçao e Metrologia</p>
+            <br>
+            <p>Matematica Discreta I</p>
+            <p>Fundamentos de Programaçao</p>
+            <p>Topografia II</p>
+            <p>Cartografia Geral</p>
+            <p>Hidrografia</p>
+            
+            <p style="font:normal 16pt times new roman;"><strong>Terceiro Ano</strong></p>
+            <p>Programaçao Orietada a Objectos</p>
+            <p>Teledetecçao</p>
+            <p>Geodosia I</p>
+            <p>Cartografia Tematica</p>
+            <p>Sistemas de Informaçao Geografica I</p>
+            <br>
+            <p>Geodosia II</p>
+            <p>Fotogrametria</p>
+            <p>Cadastro e Ordenamento do Territorio</p>
+            <p>Sistemas de Informaçao Geografica II</p>
+            <p>Base de Dados Espacias</p>
+            
+            <p style="font:normal 16pt times new roman;"><strong>Quarto Ano</strong></p>
+            <p>Geodesia Espacial</p>
+            <p>Astronomia Geodesia</p>
+            <p>Ajustamento das Observaçoes</p>
+            <p>Topografia Aplicada</p>
+            <p>Analise Numerica</p>
+            <br>
+            <p>Economia e Planificaçao de Trabalhos Topograficos</p>
+            <p>Seminarios de Estagio e Projecto de Lincenciatura</p>
+            <p>Culminaçao dos Estudos</p>
+
+        </div>
+        <div id="tipo">
+            <p style="font:normal 16pt times new roman;">Tipo de Disciplina</p><br><br>
+            <p>Complementar</p>
+            <p>Complementar</p>
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <p>Complementar</p>
+            <br>
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <p>Nuclear</p><br><br>
+
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <p>Complementar</p>
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <br>
+            <p>Nuclear</p>
+            <p>Complementar</p>
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <p>Nuclear</p><br><br>
+
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <br>
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <p>Nuclear</p><br><br>
+
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <p>Complementar</p>
+            <br>
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+            <p>Nuclear</p>
+        </div>
+    </div>
+    <div id="memory" style="display: none;background: white;"><br><br>
+        <div class="memorya" style="margin: auto;background: wheat;width: 80%;border-radius: 40px;">
+            <div class="memoryb"style="width: 50%;margin: auto;font:normal 16pt times new romam;">
+                <br>
+                <h style="font:normal 20pt algerian;color: #1492c4;"><strong>Exposicao na DMI</strong></h>
+                <p>alusiva a dia internacional da Matemática</p>
+                <p>14 de Março de 2023</p> 
+                <img class="memimg" src="imagens/Mathday.jpeg" alt="math day" style="text-align: center;;border-radius: 30px;margin: auto;">
+                <img class="memimg" src="imagens/Pieditado.jpeg" alt="math day" style="text-align: center;;border-radius: 30px;margin: auto;">
+                <img class="memimg" src="imagens/Pi.jpeg" alt="math day" style="text-align: center;;border-radius: 30px;margin: auto;">
+            </div>
+            <br><br><br>
+        </div>
+        <div class="memorya" style="margin: auto;background: wheat;width: 80%;border-radius: 40px;margin-top: 30px;">
+            <div class="memoryb" style="width: 50%;margin: auto;font:normal 16pt times new romam;">
+                <br>
+                <h style="font:normal 20pt algerian;color: #1492c4;"><strong>Grupo 21 Corporation</strong></h>
+                <p>alusiva a dia internacional da Matemática</p>
+                <p>14 de Março de 2023</p> 
+                <img class="memimg" src="imagens/Corporation.jpeg" alt="math day" style="text-align: center;;border-radius: 30px;margin: auto;">
+            </div>
+            <br><br><br>
+        </div>   
+    </div>
+    <div id="me" style="width: 100%;display: none;">
+        <div style="text-align:justify;width: 80%;margin: auto;">
+            <h3 style="text-align: center;">Bem Vindo Ao Site de Licenciatura em CIG 2023</h3>
+            Site criado em forma de aprendizado de programaçao em Java Script, com isso é um site Noob.
+            a ideia era criar de forma  criativa um site que armazene  informaçoes gerais da turma  onde
+            conteria diversas funcionalidades de auxilio e incentivo, como raking de diversos status dos
+            dos estudantes da turma, como tambem o bate-papo, para uma possivel interraçao dentro do site,
+            nao alcaçamos as espectativas ainda, mas estamos trabalhando para o site estar a 100%.</p>
+        <br><p>Este Site foi desenvolvido usando linguagem <strong>C++</strong> Em Java Script no <strong>visual studio code</strong>
+            foram adotadas varias tecnicas de programaçao interretiva, gozando e vislumbrando o Maximo de funçoes, manipulando o DOM
+            e tentando ir de acordo com o agradavel aos olhos manipulando CSS5!</p>
+            <p>Esperamos que gostem e desfrutem!</p>
+        </div>
+        <div style="width: 80%;margin: auto;background: #424040;border-radius: 20px;">
+            <div style="width: 75%;margin: auto;color:wheat;"><br>
+            <h3>Informaçoes do Site</h3>
+            <p>Nome do site: <strong>Licenciatura Em CIG 2023</strong></p>
+            <p>desenvolvido por: <strong>Valério Savage</strong></p>
+            <p>Web designer: <strong>Valério Savage</strong></p>
+            <p>Helper html: <strong>Shirley Matola</strong></p>
+            <p>Linha de Apoio: valeriodiasguite@gmail.com</p>
+            <p>contacto de apoio: 875797573</p><br>
+                <div>
+                        <p><strong>Autores:</strong></p>
+                    <img src="imagens/Im.jpg" alt="Desenvolvedor">
+                    <img src="imagens/She.jpeg" alt="Desenvolvedora">
+                    <p><strong>Savage@Danger</strong></p>    
+                </div>
+            </div> 
+        </div>
+        
+
+    </div>
+    <div id="votacao" class="votacao"  style="display: none;margin:auto;width: 100%;background:white;">
+        <h5 style="text-align: center;font: normal 25pt algerian;color: brown;">Ranking</h3>
+            <input type="text" id="barra-pesquisa" onkeyup="pesquisarAluno()" placeholder="Quick search" style="left: 5%;border-radius: 5px;">
+            <div class="bestmoth" style="width: 37%;right: 4%;top: 63%;position:absolute;background:orchid;border-radius: 20px;">
+                <div   style="margin-left: 10%;">
+                <P style="font:normal 16pt times new roman;"><strong>Best Student of the month</strong></P>
+                <div id="melhordomes"><p><strong>No Results Available!</strong></p><p>Won 0 times for The Best Student of The Week!</p></div><br>
+                </div>
+            </div>
+            <div class="bestweek" style="width: 37%;right: 4%;top: 90%;position:absolute;background:orchid;border-radius: 20px;">
+                <div  style="margin-left: 10%;">
+                <P style="font:normal 16pt times new roman;"><strong>Best Student Of The Week</strong></P>
+                <div id="melhordasemana">No Results Available!</div><br>
+                </div><br>
+            </div>
+            <div class="votresult" style="width: 37%;right: 4%;top: 120%;position:absolute;background:orchid;border-radius: 20px;">
+                <div style="margin-left: 10%;">
+                    <h2>Resultados:</h2>
+                    <div id="resultadosvotacao">No Results Available!</div><br>
+                </div>
+            </div>
+            <button class="botvot" onclick="votar()" style="width: 6%;height: 5%;font:normal 18pt grimond;border-radius: 5px;top: 65%;position:absolute;left:38%;">Votar</button>
+        <ul id="alunos-lista" class="listvot" style="width: 44%;background: #1492c4;border-radius: 20px;font-size: 18px;">
+            <br><p><input type="radio" name="aluno" value="AILTON CARLOS MACHAVA">AILTON CARLOS MACHAVA</p>
+            <p><input type="radio" name="aluno" value="AIRTON CONSUL CAETANO">AIRTON CONSUL CAETANO</p>
+            <p><input type="radio" name="aluno" value="ALBERTO SEBASTIÃO ROBI">ALBERTO SEBASTIÃO ROBI</p>
+            <p><input type="radio" name="aluno" value="ÁMINA LIMA CHUVELA">ÁMINA LIMA CHUVELA</p>
+            <p><input type="radio" name="aluno" value="ANTÓNIO BERNARDO MABOTA">ANTÓNIO BERNARDO MABOTA</p>
+            <p><input type="radio" name="aluno" value="BEATRIZ MÁRIO DINGOCO">BEATRIZ MÁRIO DINGOCO</p>
+            <p><input type="radio" name="aluno" value="BELTON GUILHERME MURARA">BELTON GUILHERME MURARA</p>
+            <p><input type="radio" name="aluno" value="CARLA RUTE NEVE">CARLA RUTE NEVE</p>
+            <p><input type="radio" name="aluno" value="CARLOS DA SILVA LIPEWA">CARLOS DA SILVA LIPEWA</p>
+            <p><input type="radio" name="aluno" value="CELESTE LUIS BOENE">CELESTE LUIS BOENE</P>
+            <p><input type="radio" name="aluno" value="DENI LESTERINO MAVIE">DENI LESTERINO MAVIE</p>
+            <p><input type="radio" name="aluno" value="EDMILSON ELSA BILA">EDMILSON ELSA BILA</p>
+            <p><input type="radio" name="aluno" value="EDSON DAVID NHANTUMBO">EDSON DAVID NHANTUMBO</p>
+            <p><input type="radio" name="aluno" value="EDSON JACINTO NHANTUMBO">EDSON JACINTO NHANTUMBO</p>
+            <p><input type="radio" name="aluno" value="EMÍLIA LUÍS COMÉ">EMÍLIA LUÍS COMÉ</p>
+            <p><input type="radio" name="aluno" value="ERCÍLIO BENEDITO NOVELE">ERCÍLIO BENEDITO NOVELE</p>
+            <p><input type="radio" name="aluno" value="FERNANDO FRANCISCO JANE NGONHAMO JÚNIOR">FERNANDO FRANCISCO JANE NGONHAMO JÚNIOR</p>
+            <p><input type="radio" name="aluno" value="FRANCISCO DAVID SITOE">FRANCISCO DAVID SITOE</p>
+            <p><input type="radio" name="aluno" value="GONCALVES ANSELMO CARLOS">GONCALVES ANSELMO CARLOS</p>
+            <p><input type="radio" name="aluno" value="HELENA ERNESTO MACHAVA">HELENA ERNESTO MACHAVA</p>
+            <p><input type="radio" name="aluno" value="HÉLDER MIGUEL LISO">HÉLDER MIGUEL LISO</p>
+            <p><input type="radio" name="aluno" value="JOSÉ NELSON SAMUEL PAULO">JOSÉ NELSON SAMUEL PAULO</p>
+            <p><input type="radio" name="aluno" value="LUÍS EMIDIO MENDES">LUÍS EMIDIO MENDES</p>
+            <p><input type="radio" name="aluno" value="MARILIA FRANCISCA MACHAVA">MARILIA FRANCISCA MACHAVA</p>
+            <p><input type="radio" name="aluno" value="MÁRIO MARCELINO MONJANE">MÁRIO MARCELINO MONJANE</p>
+            <p><input type="radio" name="aluno" value="NELSON RAFAEL CARLOS VILANCULOS">NELSON RAFAEL CARLOS VILANCULOS</p>
+            <p><input type="radio" name="aluno" value="NILZA ODETE MACHELE">NILZA ODETE MACHELE</p>
+            <p><input type="radio" name="aluno" value="NOEMIA LAURA ALEXANDRE MABUIANGUE">NOEMIA LAURA ALEXANDRE MABUIANGUE</p>
+            <p><input type="radio" name="aluno" value="SHIRLEY LAPSON MATOLA">SHIRLEY LAPSON MATOLA</p>
+            <p><input type="radio" name="aluno" value="SUZANY OSVALDO RODRIGUES">SUZANY OSVALDO RODRIGUES</p>
+            <p><input type="radio" name="aluno" value="VALTER ESTEVÃO STEFANE">VALTER ESTEVÃO STEFANE</p>
+            <p><input type="radio" name="aluno" value="VALÉRIO DIAS GUITE">VALÉRIO DIAS GUITE</p>
+            <p><input type="radio" name="aluno" value="VALÊNCIA LOURENÇO COMÉ">VALÊNCIA LOURENÇO COMÉ</p>
+            <p><input type="radio" name="aluno" value="ZACARIAS JOSÉ SITOE">ZACARIAS JOSÉ SITOE</p><br><br>
+        </ul>
+        
+        
+      <br>
+    </div>
+    <div id="limitescalculo" class="limitescalculo" style="display: none;width: 80%;margin: auto;">
+        <h1>Calculadora de Limites</h1>
+        <div>
+            <label for="funcao">Função:</label>
+            <input type="text" id="funcao" placeholder="Insira a função">
+            <br><br>
+            <label for="tendencia">Tendência:</label>
+            <input type="text" id="tendencia" placeholder="Insira a tendência">
+            <br>
+            <button onclick="calcularLimite()" style="background-color: #1f5063;color: white;border: none;padding: 10px 20px;border-radius: 8px;cursor: pointer;margin-top: 10px;">Calcular Limite</button>
+            <button onclick="calcularLimiteInfinito()" style="background-color: #1f5063;color: white;border: none;padding: 10px 20px;border-radius: 8px;cursor: pointer;margin-top: 10px;">Calcular Limite Infinito</button>
+            <button onclick="calcularLimiteMenosInfinito()" style="background-color: #1f5063;color: white;border: none;padding: 10px 20px;border-radius: 8px;cursor: pointer;margin-top: 10px;">Calcular Limite Menos Infinito</button>
+        </div><br>
+        <div id="resultadolimite"></div><br>
+        <div id="passo-a-passo"></div>
+    
+    </div>
+    <br><div class="projectosinovadores" id="projectosinovadores" style="display: none;width: 80%;margin: auto;background: pink;border-radius: 20px;">
+        <div class="projectosinovadoresb" style="width: 70%;margin: auto;">
+            <br><h1 style="text-align: center;">Projectos</h1>
+            <div class="subproj" style="color: #333;font: normal 20pt times new roman;background: #333;color: antiquewhite;border-radius: 20px;">
+                <div style="width: 70%;margin: auto;">
+                <br><p>Tens um projecto inovador a publicar?</p>
+                <p>Entre em contacto conosco!</p>
+                <p>e-mail:<a href="mailto:valeriodiasguite@gmail.com" style="color: #007bff;text-decoration: none;">valeriodiasguite@gmail.com</a></p>
+                </div><br>
+            </div><br>
+            <div style="background: #333;border-radius: 20px;">
+                <div class="subproj" style="width: 70%;margin: auto;color: antiquewhite;font: normal 20pt times new roman;"><br>
+                    <p>Nome do projecto:<strong>Website</strong>  </p>
+                    <p>Um projeto de área de programação que visa lançar um website especialmente para a turma de CIG 2023.</p>
+                    <p>Contudo, várias variáveis irão determinar o desenvolvimento dele.</p>
+                    <iframe src="projectos/website.pdf" width="70%" height="450px"></iframe>
+                    <p>Titular:<strong>Valério Savage</strong></p>
+                </div><br>
+            </div>    
+        </div><br><br>
+    </div>
+    <div id="fgg" class="documentorg" style="display: none;width: 80%;margin: auto;background: pink;border-radius: 20px;">
+        <div style="width: 70%;margin: auto;">
+            <br><h1 style="text-align: center;">Fundamentos de Geologia e Geoformologia</h1>
+            <p style="text-align: center;">Docente:<strong>Egídio Cassamo</strong></p>
+            <div class="documentorgb" style="font-size: 16px;color: #333;font: normal 20pt times new roman;background: #333;color: antiquewhite;border-radius: 20px;">
+                <div  style="width: 70%;margin: auto;">
+                <br><p>Introduçao a Geologia</p>
+                    <iframe src="documentos/introducao geologia.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Geologia e Paleontologia</p>
+                    <iframe src="documentos/Geologia e paleontologia.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Geografia fisica</p>
+                    <iframe src="documentos/Geografia fisica.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Estrutura interna da terra</p>
+                    <iframe src="documentos/estruturaInternaTerra.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Tempo Geologico</p>
+                    <iframe src="documentos/tempo geologico.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Tectonica Global</p>
+                    <iframe src="documentos/tectonica global.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Ficha Sobre Vulcanismo</p>
+                    <iframe src="documentos/Ficha Vulcanismo.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Sismologia</p>
+                    <iframe src="documentos/Sismologia.pdf" width="70%" height="450px"></iframe>
+                    <iframe src="documentos/sismologia1.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Atmosfera</p>
+                    <iframe src="documentos/atmosfera.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Exercicios de Sismos 1</p>
+                    <iframe src="documentos/exercicios sismos.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Exercicios de Sismos 2</p>
+                    <iframe src="documentos/exercicios sismos2.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Exercicios de Sismos 3</p>
+                    <iframe src="documentos/exercicios sismos3.pdf" width="70%" height="450px"></iframe> 
+                </div><br>
+            </div><br>
+            
+        </div><br><br>
+
+    </div>
+    <div id="analise1" class="documentorg" style="display: none;width: 80%;margin: auto;background: pink;border-radius: 20px;">
+        <div style="width: 70%;margin: auto;">
+            <br><h1 style="text-align: center;">Analise Matemática 1</h1>
+            <p style="text-align: center;">Docente:<strong>Eisten Bomba</strong></p>
+            <div class="documentorgb" style="font-size: 16px;color: #333;font: normal 20pt times new roman;background: #333;color: antiquewhite;border-radius: 20px;">
+                <div style="width: 70%;margin: auto;">
+                <br><p>Demidovtch</p>
+                    <iframe src="documentos/Demidovitch.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Solucionario de Demidovitch</p>
+                    <iframe src="documentos/analise1- demovich.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Modulo Manuel Alves Analise Matemática 1</p>
+                    <iframe src="documentos/manuel alves analise1.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Limites e Continuidade de uma Função</p>
+                    <iframe src="documentos/LimiteEContinuidade.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Sucessoes Numericas e Limites de uma Sucessao Numerica</p>
+                    <iframe src="documentos/sucessoes  e limites.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Derivadas</p>
+                    <iframe src="documentos/Derivada.pdf" width="70%" height="450px"></iframe>
+                    <iframe src="documentos/derivadas.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Tabela de Derivadas</p>
+                    <iframe src="documentos/tabela de derivadas.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Estudo Geral de Funçoes</p>
+                    <iframe src="documentos/EstudoGeralDeFuncoes.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Exercicios de Consolidaçao</p>
+                    <iframe src="documentos/exercicios.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Correçao do Teste 2020</p>
+                    <iframe src="documentos/correcao do teste.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Exame 2020</p>
+                    <iframe src="documentos/exame.pdf" width="70%" height="450px"></iframe> 
+                </div><br>
+            </div><br>
+            
+        </div><br><br>
+
+    </div>
+    <div id="proestatistica" class="documentorg" style="display: none;width: 80%;margin: auto;background: pink;border-radius: 20px;">
+        <div  style="width: 70%;margin: auto;">
+            <br><h1 style="text-align: center;">Probabilidade Estatistica</h1>
+            <p style="text-align: center;">Docente:<strong>Desconhecido</strong></p>
+            <div class="documentorgb" style="font-size: 16px;color: #333;font: normal 20pt times new roman;background: #333;color: antiquewhite;border-radius: 20px;">
+                <div style="width: 70%;margin: auto;">
+                <br><p>Variáveis Aleatórias Distribuições de Probabilidade</p>
+                    <iframe src="documentos/variaveis aleatorias.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Distribuições de Probabilidades Continuas</p>
+                    <iframe src="documentos/Distriubuicao de  Probabilidade continua.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Teoria de Estimação</p>
+                    <iframe src="documentos/Teoria de Estimacao.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Teoria de Amostragem</p>
+                    <iframe src="documentos/Teoria de Amostragem.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Testes de hipóteses e Testes de hipóteses para uma Média</p>
+                    <iframe src="documentos/Teste de Hipoteses.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Teste de hipóteses para Variancias</p>
+                    <iframe src="documentos/Teste de Hipoteses Continuacao.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Testes de Hipóteses para Proporções e Teste Qui-quadrado</p>
+                    <iframe src="documentos/teste de proporcoes e qui quadrado.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Análise de correlação e regressão Linear simples</p>
+                    <iframe src="documentos/correlacao e Regressao Linear.pdf" width="70%" height="450px"></iframe>
+                </div><br>
+            </div><br>
+        </div><br><br>
+    </div>
+    <div id="algebra" class="documentorg" style="display: none;width: 80%;margin: auto;background: pink;border-radius: 20px;">
+        <div style="width: 70%;margin: auto;">
+            <br><h1 style="text-align: center;">ÁLGEBRA LINEAR E GEOMETRIA ANALÍTICA</h1>
+            <p style="text-align: center;">Docente:<strong>Desconhecido</strong></p>
+            <div class="documentorgb" style="font-size: 16px;color: #333;font: normal 20pt times new roman;background: #333;color: antiquewhite;border-radius: 20px;">
+                <div style="width: 70%;margin: auto;">
+                <br><p>Modulo Algebra Linear e Geometria Analitica</p>
+                    <iframe src="documentos/ALGA.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Matrizes</p>
+                    <iframe src="documentos/matrizes.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Determinantes</p>
+                    <iframe src="documentos/Determinantes.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Plano e Recta no Espaço</p>
+                    <iframe src="documentos/plano e recta no espaco.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Curvas de Segunda Ordem no Espaço </p>
+                    <iframe src="documentos/curvas de segunda ordem no espaco.pdf" width="70%" height="450px"></iframe>
+                </div><br>
+            </div><br>
+        </div><br><br>
+    </div>
+    <div class="documentorg" id="logicaconjuntos" style="display: none;width: 80%;margin: auto;background: pink;border-radius: 20px;">
+        <div style="width: 70%;margin: auto;">
+            <br><h1 style="text-align: center;">LÓGICA E TEORIA DE CONJUNTOS</h1>
+            <p style="text-align: center;">Docente:<strong>Desconhecido</strong></p>
+            <div class="documentorgb" style="font-size: 16px;color: #333;font: normal 20pt times new roman;background: #333;color: antiquewhite;border-radius: 20px;">
+                <div style="width: 70%;margin: auto;">
+                <br><p>LÓGICA E TEORIA DE CONJUNTOS</p>
+                    <iframe src="documentos/logica e teoria de conjuntos.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Leis de álgebra de lógica</p>
+                    <iframe src="documentos/Leis de álgebra de lógica.pdf" width="70%" height="450px"></iframe>
+                    <br><p>Testes, Exames, Trabalhos DMI 2013 - 2019</p>
+                    <iframe src="documentos/ltc correcoes.pdf" width="70%" height="450px"></iframe>
+                </div><br>
+            </div><br>
+        </div><br><br>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

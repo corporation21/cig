@@ -1,0 +1,55 @@
+
+.mensagem {
+   margin: 10px;
+   padding: 10px;
+   border-radius: 5px;
+}
+.usuario {
+   background-color: #aaffaa; /* Cor para as mensagens do usuário */
+   text-align: right;
+}
+.outro-usuario {
+   background-color: #aaaaff; /* Cor para as mensagens de outros usuários */
+   text-align: left;
+}
+input{
+       text-align: center;
+       margin-top: 10px;
+
+   }
+   button{
+       margin-top: 10px;
+   }
+   div#semestre{
+       position: absolute;
+       left: 20%;
+   }
+   div#disciplina{
+       position: absolute;
+       left: 40%;
+   }
+   div#tipo{
+       position: absolute;
+       right: 20%;
+   }
+   .avatar {
+       width: 50px;
+       height: 50px;
+       object-fit: cover;
+       border-radius: 30%;
+       margin-right: 10px;
+   }
+   .nome-alcunha {
+   vertical-align: middle; /* Adicionado para alinhar o nome e a alcunha verticalmente */
+   margin-right: 20px;
+}
+
+.pessoa-cadastrada {
+   display: flex; /* Adicionado para usar flexbox e alinhar a foto e a alcunha horizontalmente */
+   align-items: center; /* Adicionado para centralizar verticalmente a foto e a alcunha */
+   margin-bottom: 10px;
+}
+a:hover {
+       text-decoration: underline;
+   }
+
